@@ -1,0 +1,12 @@
+<!-- Add form to create new posts -->
+<h1>Dashboard</h1>
+{{#if posts}}
+  {{#each posts}}
+    <div class="post">
+      <h2>{{this.title}}</h2>
+      <!-- Add buttons for editing and deleting posts -->
+    </div>
+  {{/each}}
+{{else}}
+  <p>You have not created any posts yet.</p>
+{{/if}}
