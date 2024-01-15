@@ -40,4 +40,14 @@ User.init({
   modelName: 'user',
 });
 
-module.exports = User;
+// ... User model definition ...
+
+User.associate = (models) => {
+    User.hasMany(models.Post, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
+  };
+  
+  module.exports = User;
+  

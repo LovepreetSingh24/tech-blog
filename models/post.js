@@ -11,4 +11,13 @@ Post.init({
   sequelize
 });
 
-module.exports = Post;
+// ... Post model definition ...
+
+Post.associate = (models) => {
+    Post.belongsTo(models.User, {
+      foreignKey: 'userId'
+    });
+  };
+  
+  module.exports = Post;
+  
