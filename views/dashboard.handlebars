@@ -1,12 +1,21 @@
-<!-- Add form to create new posts -->
-<h1>Dashboard</h1>
-{{#if posts}}
-  {{#each posts}}
-    <div class="post">
-      <h2>{{this.title}}</h2>
-      <!-- Add buttons for editing and deleting posts -->
-    </div>
-  {{/each}}
-{{else}}
-  <p>You have not created any posts yet.</p>
-{{/if}}
+{{!-- Add form to create new posts --}}
+<form action="/posts" method="POST">
+  <input type="text" name="title" placeholder="Post title" required />
+  <textarea name="content" placeholder="Post content" required></textarea>
+  <button type="submit">Create Post</button>
+</form>
+
+{{!-- List existing posts with edit and delete buttons --}}
+{{#each posts}}
+  <div class="post">
+    <h2>{{this.title}}</h2>
+    <p>{{this.content}}</p>
+    <form action="/posts/{{this.id}}?_method=PUT" method="POST">
+      <button type="submit">Edit</button>
+    </form>
+    <form action="/posts/{{this.id}}?_method=DELETE" method="POST">
+<button type="submit">Delete</button>
+</form>
+
+  </div>
+{{/each}}
