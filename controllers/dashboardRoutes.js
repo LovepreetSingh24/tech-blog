@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Post } = require('../models');
-const withAuth = require('../utils/withAuth'); // Assuming you have a middleware for authentication
+const withAuth = require('../utils/withAuth');
 
 // GET route to display the dashboard with user's posts
 router.get('/', withAuth, async (req, res) => {

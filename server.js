@@ -35,8 +35,8 @@ app.use(session({
 // Use the imported routes
 app.use(routes);
 app.use('/', homeRoutes);
-app.use('/dashboard', dashboardRoutes);
-app.use('/auth', authRoutes);
+app.use('/', dashboardRoutes);
+app.use('/', authRoutes);
 
 
 sequelize.sync({ force: false }).then(() => {

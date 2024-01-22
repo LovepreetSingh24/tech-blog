@@ -3,6 +3,24 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 const { User } = require('../models');
 
+// GET route for login page
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+      res.redirect('/dashboard');
+  } else {
+      res.render('login');
+  }
+});
+
+// GET route for registration page
+router.get('/register', (req, res) => {
+  if (req.session.loggedIn) {
+      res.redirect('/dashboard');
+  } else {
+      res.render('register');
+  }
+});
+
 // Handle registration
 router.post('/register', async (req, res) => {
   try {
