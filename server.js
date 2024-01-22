@@ -7,6 +7,7 @@ const sequelize = require('./config/connection'); // Import sequelize connection
 const homeRoutes = require('./controllers/homeRoutes');
 const dashboardRoutes = require('./controllers/dashboardRoutes');
 const authRoutes = require('./controllers/authRoutes');
+const postRoutes = require('./controllers/postRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -37,6 +38,7 @@ app.use(routes);
 app.use('/', homeRoutes);
 app.use('/', dashboardRoutes);
 app.use('/', authRoutes);
+app.use('/', postRoutes);
 
 
 sequelize.sync({ force: false }).then(() => {
