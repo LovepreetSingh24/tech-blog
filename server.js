@@ -4,7 +4,9 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const routes = require('./controllers'); // Import routes
 const sequelize = require('./config/connection'); // Import sequelize connection
-
+const homeRoutes = require('./controllers/homeRoutes');
+const dashboardRoutes = require('./controllers/dashboardRoutes');
+const authRoutes = require('./controllers/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -32,6 +34,10 @@ app.use(session({
 
 // Use the imported routes
 app.use(routes);
+app.use('/', homeRoutes);
+app.use('/dashboard', dashboardRoutes);
+app.use('/auth', authRoutes);
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
