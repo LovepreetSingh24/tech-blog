@@ -8,24 +8,24 @@ router.get('/', withAuth, async (req, res) => {
   try {
     const userPosts = await Post.findAll({
       where: {
-        userId: req.session.userId // Assuming your session has userId stored
+        userId: req.session.userId
       }
     });
     // Convert the sequelize objects into plain objects
     const posts = userPosts.map(post => post.get({ plain: true }));
-    res.render('dashboard', { posts }); // Render the dashboard view with posts
+    res.render('dashboard', { posts });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
   }
 });
 
-// POST route to create a new post
-router.post('/', withAuth, async (req, res) => {
+// POST route to create new post
+router.post('/posts', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
-      userId: req.session.userId // Attach the userId to the post
+      userId: req.session.userId
     });
     res.redirect('/dashboard');
   } catch (err) {
@@ -40,7 +40,7 @@ router.put('/:id', withAuth, async (req, res) => {
     await Post.update(req.body, {
       where: {
         id: req.params.id,
-        userId: req.session.userId // Check the owner of the post
+        userId: req.session.userId
       }
     });
     res.redirect('/dashboard');
@@ -56,7 +56,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     await Post.destroy({
       where: {
         id: req.params.id,
-        userId: req.session.userId // Check the owner of the post
+        userId: req.session.userId
       }
     });
     res.redirect('/dashboard');

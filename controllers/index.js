@@ -3,12 +3,10 @@ const router = express.Router();
 
 const homeRoutes = require('./homeRoutes');
 const dashboardRoutes = require('./dashboardRoutes');
-const authRoutes = require('./authRoutes'); // Import
+const authRoutes = require('./authRoutes');
 
-
-// Use the imported routes
 router.use('/', homeRoutes);
 router.use('/dashboard', dashboardRoutes);
-router.use('/auth', authRoutes); // Add this line to define the prefix for auth routes
+router.use('/auth', authRoutes);
 
 module.exports = router;

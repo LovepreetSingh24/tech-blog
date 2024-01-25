@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
       password: req.body.password
     });
 
-    // Start a new session
+    // New session
     req.session.save(() => {
       req.session.userId = newUser.id;
       req.session.username = newUser.username;
@@ -64,7 +64,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // Start a new session
+    // New session
     req.session.save(() => {
       req.session.userId = user.id;
       req.session.username = user.username;

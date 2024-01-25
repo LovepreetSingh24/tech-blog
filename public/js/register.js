@@ -11,7 +11,6 @@ document.getElementById('register-form').addEventListener('submit', async (event
     });
   
     if (response.ok) {
-      // Redirect to the dashboard after registration
       document.location.replace('/dashboard');
     } else {
       alert('Failed to register');

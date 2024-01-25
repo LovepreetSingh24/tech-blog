@@ -11,7 +11,6 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     });
   
     if (response.ok) {
-      // Redirect to the dashboard after login
       document.location.replace('/dashboard');
     } else {
       alert('Failed to log in');

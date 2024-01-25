@@ -48,7 +48,7 @@ router.put('/:id', withAuth, async (req, res) => {
         const updatedPost = await Post.update(req.body, {
             where: {
                 id: req.params.id,
-                userId: req.session.userId // Ensure the user owns the post
+                userId: req.session.userId
             }
         });
 
@@ -68,7 +68,7 @@ router.delete('/:id', withAuth, async (req, res) => {
         const deletedPost = await Post.destroy({
             where: {
                 id: req.params.id,
-                userId: req.session.userId // Ensure the user owns the post
+                userId: req.session.userId
             }
         });
         if (deletedPost) {

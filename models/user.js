@@ -9,7 +9,6 @@ class User extends Model {
 }
 
 User.init({
-  // Define attributes such as username, email, and password here
   username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -19,7 +18,7 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      len: [8] // Passwords must be at least 8 characters long
+      len: [8]
     }
   }
 }, {
@@ -39,8 +38,6 @@ User.init({
   underscored: true,
   modelName: 'user',
 });
-
-// ... User model definition ...
 
 User.associate = (models) => {
     User.hasMany(models.Post, {

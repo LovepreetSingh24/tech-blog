@@ -5,7 +5,7 @@ router.get('/', async (req, res) => {
     try {
       const postData = await Post.findAll();
       const posts = postData.map((post) => post.get({ plain: true }));
-      res.render('home', { posts }); // This matches the name of your handlebars file
+      res.render('home', { posts });
     } catch (err) {
       res.status(500).json(err);
     }
